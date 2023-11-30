@@ -1,6 +1,6 @@
 package gameplay
 
 sealed class FireType {
-    object singleShoot{}
-    data class burstShoot(val burstLength: Int) {}
+    object singleShoot: FireType(){}
+    data class BurstShoot(val burstLength: Int):FireType() {}
 }

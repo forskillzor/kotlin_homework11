@@ -1,7 +1,7 @@
 package utils
 
 class Stack<T> {
-    val list = mutableListOf<T>()
+    private val list = mutableListOf<T>()
     fun push(item: T) {
         list.add(item)
     }
@@ -18,5 +18,6 @@ class Stack<T> {
     override fun toString(): String {
         return "Stack(list=$list)"
     }
-
+    val size: Int
+    get() = list.size
 }

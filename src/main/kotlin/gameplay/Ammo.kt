@@ -2,9 +2,9 @@ package gameplay
 
 enum class Ammo {
     BERETTA {
-        val damage = 1
-        val criticalDamageChance = 20
-        val criticalDamageK = 5
+        private val damage = 1
+        private val criticalDamageChance = 20
+        private val criticalDamageK = 5
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -12,9 +12,9 @@ enum class Ammo {
         }
     },
     UPS {
-        val damage = 2
-        val criticalDamageChance = 15
-        val criticalDamageK = 8
+        private val damage = 2
+        private val criticalDamageChance = 15
+        private val criticalDamageK = 8
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -23,9 +23,9 @@ enum class Ammo {
 
     },
     MAKAROV {
-        val damage = 2
-        val criticalDamageChance = 20
-        val criticalDamageK = 8
+        private val damage = 2
+        private val criticalDamageChance = 20
+        private val criticalDamageK = 8
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -33,9 +33,9 @@ enum class Ammo {
         }
     },
     MACHINEGUN {
-        val damage = 10
-        val criticalDamageChance = 20
-        val criticalDamageK = 50
+        private val damage = 10
+        private val criticalDamageChance = 20
+        private val criticalDamageK = 50
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -43,9 +43,9 @@ enum class Ammo {
         }
     },
     AK47 {
-        val damage = 1
-        val criticalDamageChance = 20
-        val criticalDamageK = 5
+        private val damage = 1
+        private val criticalDamageChance = 20
+        private val criticalDamageK = 5
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -53,9 +53,9 @@ enum class Ammo {
         }
     },
     M16 {
-        val damage = 1
-        val criticalDamageChance = 20
-        val criticalDamageK = 5
+        private val damage = 1
+        private val criticalDamageChance = 20
+        private val criticalDamageK = 5
         fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
