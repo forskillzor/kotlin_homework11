@@ -26,5 +26,4 @@ fun main() {
     val value2 = stack.pop()
 
     println("$stack, stack pop=$value2")
-
 }
