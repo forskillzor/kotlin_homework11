@@ -4,7 +4,7 @@ import utils.Stack
 
 // TODO change abstract class to open class
 
-class AbstractWeapon {
+open class AbstractWeapon {
     val ammoType: Ammo = Ammo.BERETTA
     val fireType: FireType = FireType.singleShoot
     protected val magazineSize: Int = 10
