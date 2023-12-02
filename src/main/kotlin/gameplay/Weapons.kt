@@ -6,7 +6,7 @@ object Weapons {
     fun createBeretta(): AbstractWeapon {
         return object : AbstractWeapon() {
             override val magazineSize = 15
-            override val fireType = FireType.BurstShoot(10)
+            fireType = FireType.BurstShoot(10)
             override val magazin: Stack<Ammo>
                 get() = TODO("Not yet implemented")
 

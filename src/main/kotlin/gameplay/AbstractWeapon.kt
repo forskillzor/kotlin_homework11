@@ -5,10 +5,10 @@ import utils.Stack
 // TODO change abstract class to open class
 
 open class AbstractWeapon {
-    val ammoType: Ammo = Ammo.BERETTA
-    val fireType: FireType = FireType.singleShoot
-    protected val magazineSize: Int = 10
+    protected open val magazineSize: Int = 10
+    protected val fireType: FireType = FireType.singleShoot
     protected var magazin: Stack<Ammo> = Stack()
+    val ammoType: Ammo = Ammo.BERETTA
 
     val isEmptyMagazin: Boolean
         get() = magazin.size == 0
