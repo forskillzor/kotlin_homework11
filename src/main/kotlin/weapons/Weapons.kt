@@ -1,4 +1,4 @@
-package gameplay
+package weapons
 
 object Weapons {
     fun createWeapon(weapon: WeaponType): AbstractWeapon {
@@ -27,7 +27,7 @@ object Weapons {
             WeaponType.m134 ->
                 object : AbstractWeapon() {
                     override val magazineSize: Int = 1500
-                    override val fireType: FireType = FireType.BurstShoot(300)
+                    override val fireType: FireType = FireType.BurstShoot(20)
                     override val weaponType = WeaponType.m134
                     override val ammoType = Ammo.AK_7_62
                 }

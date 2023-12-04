@@ -1,17 +1,17 @@
-package gameplay
+package weapons
 
 import utils.Stack
 
-open class AbstractWeapon {
-    protected open val magazineSize: Int = 10
-    open val fireType: FireType = FireType.singleShoot
-    // TODO protected magazin
-    var magazin: Stack<Ammo> = Stack()
-    open val weaponType: WeaponType = WeaponType.beretta
-    protected open val ammoType: Ammo = Ammo.PARABELLUM_9X19
+abstract class AbstractWeapon {
+    abstract protected val magazineSize: Int
+    abstract protected val ammoType: Ammo
+    abstract val fireType: FireType
+    abstract val weaponType: WeaponType
+
+    protected var magazine: Stack<Ammo> = Stack<Ammo>()
 
     val isEmptyMagazin: Boolean
-        get() = magazin.isEmpty()
+        get() = magazine.isEmpty()
 
     fun createBullet(): Ammo {
         return when (ammoType) {
@@ -23,18 +23,19 @@ open class AbstractWeapon {
         }
     }
 
-    fun getBulletForShoot(): Ammo?{
+    fun getBulletForShoot(): Ammo? {
         if (isEmptyMagazin) {
             return null
         } else {
-            return magazin.pop()
+            return magazine.pop()
         }
     }
+
     fun reload() {
         val newMagazin = Stack<Ammo>()
         for (ammo in 0 until magazineSize) {
             newMagazin.push(createBullet())
         }
-        magazin = newMagazin
+        magazine = newMagazin
     }
 }

@@ -1,4 +1,4 @@
-package gameplay
+package weapons
 
 sealed class FireType {
     object singleShoot : FireType() {

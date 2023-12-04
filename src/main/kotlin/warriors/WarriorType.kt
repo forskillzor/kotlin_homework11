@@ -1,4 +1,4 @@
-package gameplay
+package warriors
 
 sealed class WarriorType {
     object soldier : WarriorType(){

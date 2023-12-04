@@ -1,4 +1,6 @@
-package gameplay
+package weapons
+
+import gameplay.chance
 
 enum class Ammo {
     PARABELLUM_9X19 {
@@ -33,7 +35,7 @@ enum class Ammo {
     },
     AK_7_62 {
         private val damage = 5
-        private val criticalDamageChance = 6
+        private val criticalDamageChance = 30
         private val criticalDamageK = 10
         override fun getDamage(): Int {
             var currentDamage = damage
@@ -43,7 +45,7 @@ enum class Ammo {
     },
     M_5_56 {
         private val damage = 3
-        private val criticalDamageChance = 3
+        private val criticalDamageChance = 18
         private val criticalDamageK = 5
         override fun getDamage(): Int {
             var currentDamage = damage
