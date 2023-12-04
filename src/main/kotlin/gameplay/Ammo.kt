@@ -1,66 +1,55 @@
 package gameplay
 
 enum class Ammo {
-    BERETTA {
+    PARABELLUM_9X19 {
         private val damage = 1
         private val criticalDamageChance = 20
         private val criticalDamageK = 5
-        fun getDamage(): Int {
+        override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
             return currentDamage
         }
     },
-    UPS {
+    SW40_9x19 {
         private val damage = 2
         private val criticalDamageChance = 15
         private val criticalDamageK = 8
-        fun getDamage(): Int {
-            var currentDamage = damage
-            if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
-            return currentDamage
-        }
-
-    },
-    MAKAROV {
-        private val damage = 2
-        private val criticalDamageChance = 20
-        private val criticalDamageK = 8
-        fun getDamage(): Int {
+        override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
             return currentDamage
         }
     },
-    MACHINEGUN {
-        private val damage = 10
-        private val criticalDamageChance = 20
-        private val criticalDamageK = 50
-        fun getDamage(): Int {
-            var currentDamage = damage
-            if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
-            return currentDamage
-        }
-    },
-    AK47 {
+    PM_9x18 {
         private val damage = 1
-        private val criticalDamageChance = 20
-        private val criticalDamageK = 5
-        fun getDamage(): Int {
+        private val criticalDamageChance = 25
+        private val criticalDamageK = 18
+        override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
             return currentDamage
         }
     },
-    M16 {
-        private val damage = 1
-        private val criticalDamageChance = 20
-        private val criticalDamageK = 5
-        fun getDamage(): Int {
+    AK_7_62 {
+        private val damage = 5
+        private val criticalDamageChance = 6
+        private val criticalDamageK = 10
+        override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
             return currentDamage
         }
     },
-
+    M_5_56 {
+        private val damage = 3
+        private val criticalDamageChance = 3
+        private val criticalDamageK = 5
+        override fun getDamage(): Int {
+            var currentDamage = damage
+            if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
+            return currentDamage
+        }
+    };
+    abstract fun getDamage(): Int
 }

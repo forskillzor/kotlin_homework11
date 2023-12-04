@@ -5,11 +5,14 @@ class Stack<T> {
     fun push(item: T) {
         list.add(item)
     }
-    fun pop(): T {
-        val last = list.lastIndex
-        val result = list[last]
-        list.removeAt(last)
-        return result
+    fun pop(): T? {
+        if (!isEmpty()) {
+            val last = list.lastIndex
+            val result = list[last]
+            list.removeAt(last)
+            return result
+        }
+        return null
     }
     fun isEmpty(): Boolean{
         return list.size == 0

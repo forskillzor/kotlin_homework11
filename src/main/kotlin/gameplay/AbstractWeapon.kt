@@ -2,30 +2,33 @@ package gameplay
 
 import utils.Stack
 
-// TODO change abstract class to open class
-
 open class AbstractWeapon {
     protected open val magazineSize: Int = 10
-    protected val fireType: FireType = FireType.singleShoot
-    protected var magazin: Stack<Ammo> = Stack()
-    val ammoType: Ammo = Ammo.BERETTA
+    open val fireType: FireType = FireType.singleShoot
+    // TODO protected magazin
+    var magazin: Stack<Ammo> = Stack()
+    open val weaponType: WeaponType = WeaponType.beretta
+    protected open val ammoType: Ammo = Ammo.PARABELLUM_9X19
 
     val isEmptyMagazin: Boolean
-        get() = magazin.size == 0
+        get() = magazin.isEmpty()
 
     fun createBullet(): Ammo {
         return when (ammoType) {
-            Ammo.BERETTA -> Ammo.BERETTA
-            Ammo.UPS -> Ammo.UPS
-            Ammo.MAKAROV -> Ammo.MAKAROV
-            Ammo.MACHINEGUN -> Ammo.MACHINEGUN
-            Ammo.AK47 -> Ammo.AK47
-            Ammo.M16 -> Ammo.M16
+            Ammo.PARABELLUM_9X19 -> Ammo.PARABELLUM_9X19
+            Ammo.SW40_9x19 -> Ammo.SW40_9x19
+            Ammo.PM_9x18 -> Ammo.PM_9x18
+            Ammo.AK_7_62 -> Ammo.AK_7_62
+            Ammo.M_5_56 -> Ammo.M_5_56
         }
     }
 
-    fun getBulletForShoot(): Ammo {
-        return magazin.pop()
+    fun getBulletForShoot(): Ammo?{
+        if (isEmptyMagazin) {
+            return null
+        } else {
+            return magazin.pop()
+        }
     }
     fun reload() {
         val newMagazin = Stack<Ammo>()

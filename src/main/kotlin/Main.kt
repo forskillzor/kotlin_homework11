@@ -1,37 +1,20 @@
-import gameplay.Weapons
-import utils.Stack
+import gameplay.Captain
+import gameplay.General
+import gameplay.Soldier
 
 fun main() {
-    println("Hello World!!!")
+    val soldier1 = Soldier("Антон")
+    val soldier2 = Soldier("Сергей")
 
-    val stack = Stack<Int>()
+    val captain1 = Captain("Валера")
+    val captain2 = Captain("Геннадий")
 
-    println(stack)
+    val general1 = General("Потапов")
+    val general2 = General("Стрелков")
 
-    println("Stack is empty: ${stack.isEmpty()}")
+    soldier1.attack(soldier2)
+    soldier1.attack(captain1)
+    captain1.attack(soldier1)
+    general1.attack(soldier1)
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    stack.push(4)
-    stack.push(5)
-
-    println(stack)
-
-    println("Stack is empty: ${stack.isEmpty()}")
-
-    val value1 = stack.pop()
-
-    println("$stack, stack pop=$value1")
-
-    val value2 = stack.pop()
-
-    println("$stack, stack pop=$value2")
-
-    val beretta = Weapons.createBeretta()
-    val ups = Weapons.createUPS()
-    val makarov = Weapons.createMakarov()
-    val m16 = Weapons.createM16()
-    val machinegun = Weapons.createMachinegun()
-    val ak47 = Weapons.createAK47()
 }
