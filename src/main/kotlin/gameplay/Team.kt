@@ -1,18 +1,18 @@
 package gameplay
 
-import warriors.Captain
-import warriors.General
-import warriors.Soldier
-import warriors.Warrior
+import warriors.*
 import kotlin.random.Random
 
 class Team(
-    val teamName: String,
+    public val teamName: String,
     size: Int
 ) {
-    val list = mutableListOf<Warrior>()
+    private val list = mutableListOf<Warrior>()
+    val removeCandidates = mutableListOf<Warrior>()
     val generalChance = 10
     val captainChance = 40
+    val size: Int
+        get() = list.size
     val names = listOf<String>(
         "Сергей", "Антон", "Николай", "Михаил", "Алексей", "Александр", "Вячеслав", "Олег", "Анатолий",
         "Ярослав", "Андрей", "Константин", "Евгений", "Петр", "Глеб", "Яков", "Ильдар", "Ахмед",
@@ -21,18 +21,26 @@ class Team(
     init {
         for (i in 0 until size) {
             if (generalChance.chance()) {
-                list.add(General(teamName, getVarName()))
+                list.add(General(this, getVarName()))
                 continue
             }
             if (captainChance.chance()) {
-                list.add(Captain(teamName,getVarName()))
+                list.add(Captain(this,getVarName()))
                 continue
             }
-            list.add(Soldier(teamName, getVarName()))
+            list.add(Soldier(this, getVarName()))
         }
     }
 
-    fun getVarName(): String {
+    private fun getVarName(): String {
         return names.get(Random.nextInt(0, names.size-1))
+    }
+
+    fun update() {
+        list.removeAll(removeCandidates)
+    }
+
+    fun killed(warrior: Warrior) {
+        removeCandidates.add(warrior)
     }
 }
