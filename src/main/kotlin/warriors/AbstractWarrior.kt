@@ -24,19 +24,23 @@ abstract class AbstractWarrior(
     override var isKilled: Boolean = false
 
     override fun attack(enemy: Warrior) {
-        if ( this === enemy) {
-            println("Нельзя стрелять в самого себя")
+        when {
+            enemy === this -> println("Нельзя стрелять в самого себя")
+//            enemy.isKilled -> return
         }
 
         println("$team ${warriorType}: ${name} стреляет из ${weapon.weaponType} в ${enemy.team.teamName} ${enemy.warriorType}а: ${enemy.name}")
 
         for (n in 1..weapon.fireType.numOfBullets) {
             val bullet = weapon.getBulletForShoot()
-            if (bullet == null){
-                weapon.reload()
-                break
+            when {
+                bullet == null -> {
+                    weapon.reload()
+                    println("Перезаряжается!")
+                    return
+                }
             }
-            val damage = bullet.getDamage()
+            val damage = bullet?.getDamage()
             if(aim.chance()) {
                 enemy.getDamage(damage)
             } else {

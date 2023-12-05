@@ -7,6 +7,7 @@ class Team(
     public val teamName: String,
     size: Int
 ) {
+    var isDead: Boolean = false
     private val list = mutableListOf<Warrior>()
     val removeCandidates = mutableListOf<Warrior>()
     val generalChance = 10
@@ -36,8 +37,14 @@ class Team(
         return names.get(Random.nextInt(0, names.size-1))
     }
 
+    fun getWarriorByIndex(index: Int): Warrior {
+        return list.get(index)
+    }
+
     fun update() {
         list.removeAll(removeCandidates)
+        if (list.isEmpty())
+            isDead = true
     }
 
     fun killed(warrior: Warrior) {

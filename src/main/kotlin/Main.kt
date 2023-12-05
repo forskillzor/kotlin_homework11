@@ -3,8 +3,8 @@ import gameplay.Team
 
 fun main() {
 
-    val assault = Team("Assaults",20)
-    val terrorist = Team("Terrorists", 20)
+    val assault = Team("Assaults",3)
+    val terrorist = Team("Terrorists", 3)
 
     val battle = Battle(assault, terrorist)
 

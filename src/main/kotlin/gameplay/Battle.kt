@@ -5,9 +5,10 @@ import kotlin.random.Random
 
 class Battle(
     val team1: Team,
-    val team2: Team
+    val team2: Team,
 ) {
 
+//    val battleOrder
     val removeCandidateTeam1 = mutableListOf<Warrior>()
     val removeCandidateTeam2 = mutableListOf<Warrior>()
 
@@ -15,6 +16,7 @@ class Battle(
 
     fun getState() {
         /* TODO get victory criterias
+        GET STATE from BattleState
         Here is criterias
         Here is battle state
          */
@@ -32,16 +34,22 @@ class Battle(
     }
 
     fun randomAttack(warriors: Team, enemies: Team) {
-        val warrior = Random.nextInt(0, warriors.size - 1)
-        val enemy = Random.nextInt(0, enemies.size - 1)
+        if(warriors.size == 1 || enemies.size == 1) {
+            isFinished = true
+            return
+        }
+
+        val warrior = warriors.getWarriorByIndex(Random.nextInt(0, warriors.size))
+        val enemy = enemies.getWarriorByIndex(Random.nextInt(0, enemies.size))
+        warrior.attack(enemy)
     }
 
     fun update() {
         team1.update()
         team2.update()
-    }
 
-    fun kill(warrior: Warrior, enemy: Warrior) {
-        warrior.attack(enemy)
+        if(team1.isDead || team2.isDead) {
+            isFinished = true
+        }
     }
 }
