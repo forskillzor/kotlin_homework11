@@ -1,5 +1,6 @@
 package weapons
 
+import gameplay.chance
 import utils.Stack
 
 abstract class AbstractWeapon {
@@ -29,6 +30,21 @@ abstract class AbstractWeapon {
         } else {
             return magazine.pop()
         }
+    }
+
+    fun shoot(): Int {
+        var damage: Int = 0
+        for (n in 1..fireType.numOfBullets) {
+            val bullet = getBulletForShoot()
+            when {
+                bullet == null -> {
+                    reload()
+                    println("Перезаряжается!")
+                    return 0
+                } else -> damage += bullet.getDamage()
+            }
+        }
+        return damage
     }
 
     fun reload() {

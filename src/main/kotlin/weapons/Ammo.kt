@@ -4,8 +4,8 @@ import gameplay.chance
 
 enum class Ammo {
     PARABELLUM_9X19 {
-        private val damage = 1
-        private val criticalDamageChance = 20
+        private val damage = 10
+        private val criticalDamageChance = 10
         private val criticalDamageK = 5
         override fun getDamage(): Int {
             var currentDamage = damage
@@ -14,7 +14,7 @@ enum class Ammo {
         }
     },
     SW40_9x19 {
-        private val damage = 2
+        private val damage = 15
         private val criticalDamageChance = 15
         private val criticalDamageK = 8
         override fun getDamage(): Int {
@@ -24,9 +24,9 @@ enum class Ammo {
         }
     },
     PM_9x18 {
-        private val damage = 1
-        private val criticalDamageChance = 25
-        private val criticalDamageK = 18
+        private val damage = 10
+        private val criticalDamageChance = 10
+        private val criticalDamageK = 5
         override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -34,9 +34,9 @@ enum class Ammo {
         }
     },
     AK_7_62 {
-        private val damage = 5
-        private val criticalDamageChance = 30
-        private val criticalDamageK = 10
+        private val damage = 25
+        private val criticalDamageChance = 5
+        private val criticalDamageK = 5
         override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK
@@ -44,9 +44,9 @@ enum class Ammo {
         }
     },
     M_5_56 {
-        private val damage = 3
-        private val criticalDamageChance = 18
-        private val criticalDamageK = 5
+        private val damage = 20
+        private val criticalDamageChance = 15
+        private val criticalDamageK = 3
         override fun getDamage(): Int {
             var currentDamage = damage
             if (criticalDamageChance.chance()) currentDamage += damage * criticalDamageK

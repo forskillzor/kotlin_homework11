@@ -7,14 +7,12 @@ class Battle(
     val team1: Team,
     val team2: Team,
 ) {
-
-//    val battleOrder
-    val removeCandidateTeam1 = mutableListOf<Warrior>()
-    val removeCandidateTeam2 = mutableListOf<Warrior>()
+    val state: BattleState = BattleState.Progress
 
     var isFinished = false
 
     fun getState() {
+        state.getState()
         /* TODO get victory criterias
         GET STATE from BattleState
         Here is criterias

@@ -10,9 +10,9 @@ class General(team: Team, name: String) : AbstractWarrior() {
     override var team: Team = team
     override var warriorType: WarriorType = WarriorType.general
     override val healthMax: Int = WarriorType.general.healthMax
-    override var health = Random.nextInt(200, healthMax)
-    override val chanceToDodge = 90
-    override var aim: Int = 80
+    override var health = Random.nextInt(80, healthMax)
+    override val chanceToDodge = 50
+    override var aim: Int = 95
 
     init {
         weapon = Weapons.createWeapon(WeaponType.ak47)

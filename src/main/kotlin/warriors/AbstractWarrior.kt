@@ -26,26 +26,16 @@ abstract class AbstractWarrior(
     override fun attack(enemy: Warrior) {
         when {
             enemy === this -> println("Нельзя стрелять в самого себя")
-//            enemy.isKilled -> return
+            enemy.isKilled -> return
         }
 
-        println("$team ${warriorType}: ${name} стреляет из ${weapon.weaponType} в ${enemy.team.teamName} ${enemy.warriorType}а: ${enemy.name}")
+        println("<${team.teamName}> ${warriorType}: ${name} стреляет из ${weapon.weaponType} в <${enemy.team.teamName}> ${enemy.warriorType}а: ${enemy.name}")
+        val damage = weapon.shoot()
 
-        for (n in 1..weapon.fireType.numOfBullets) {
-            val bullet = weapon.getBulletForShoot()
-            when {
-                bullet == null -> {
-                    weapon.reload()
-                    println("Перезаряжается!")
-                    return
-                }
-            }
-            val damage = bullet?.getDamage()
-            if(aim.chance()) {
-                enemy.getDamage(damage)
-            } else {
-                println("Промазал!")
-            }
+        if (aim.chance()) {
+            enemy.getDamage(damage)
+        } else {
+            println("Промазал!")
         }
     }
 
@@ -53,8 +43,7 @@ abstract class AbstractWarrior(
         if (chanceToDodge.chance()) {
             println("$warriorType $name увернулся от выстрела!")
             return
-        }
-        else {
+        } else {
             health -= damage
             println("$warriorType $name получил урон: $damage")
         }

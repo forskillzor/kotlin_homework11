@@ -26,7 +26,7 @@ class Team(
                 continue
             }
             if (captainChance.chance()) {
-                list.add(Captain(this,getVarName()))
+                list.add(Captain(this, getVarName()))
                 continue
             }
             list.add(Soldier(this, getVarName()))
@@ -34,7 +34,7 @@ class Team(
     }
 
     private fun getVarName(): String {
-        return names.get(Random.nextInt(0, names.size-1))
+        return names.get(Random.nextInt(0, names.size - 1))
     }
 
     fun getWarriorByIndex(index: Int): Warrior {
