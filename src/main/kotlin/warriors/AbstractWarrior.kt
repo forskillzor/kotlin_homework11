@@ -6,7 +6,7 @@ import weapons.WeaponType
 import weapons.Weapons
 
 abstract class AbstractWarrior(
-) : Warrior {
+) : Warrior{
     abstract val healthMax: Int
     abstract var health: Int
     abstract val aim: Int

@@ -6,7 +6,7 @@ import kotlin.random.Random
 class Team(
     public val teamName: String,
     size: Int
-) {
+): Iterable<Warrior> {
     var isDead: Boolean = false
     private val list = mutableListOf<Warrior>()
     val removeCandidates = mutableListOf<Warrior>()
@@ -31,6 +31,10 @@ class Team(
             }
             list.add(Soldier(this, getVarName()))
         }
+    }
+
+    override fun iterator(): Iterator<Warrior> {
+        return list.iterator()
     }
 
     private fun getVarName(): String {

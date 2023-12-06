@@ -1,15 +1,16 @@
 package gameplay
 
-import warriors.Warrior
 import kotlin.random.Random
 
 class Battle(
     private val team1: Team,
     private val team2: Team,
-) {
+    private val battleMode: BattleMode
+    ) {
     private var state: BattleState = BattleState.Progress
 
     enum class AttackOrder { TEAM1, TEAM2 }
+    val mode: BattleMode = battleMode
 
     var attackOrder: AttackOrder = AttackOrder.TEAM1
     var warriors = team1
@@ -49,15 +50,12 @@ class Battle(
         }
     }
 
-    private fun randomAttack(warriors: Team, enemies: Team) {
+    private fun attack(warriors: Team, enemies: Team) {
         if (warriors.size == 1 || enemies.size == 1) {
             isFinished = true
             return
         }
-
-        val warrior = warriors.getWarriorByIndex(Random.nextInt(0, warriors.size))
-        val enemy = enemies.getWarriorByIndex(Random.nextInt(0, enemies.size))
-        warrior.attack(enemy)
+        mode.attack(warriors, enemies)
     }
 
     fun getState() {
@@ -65,7 +63,7 @@ class Battle(
     }
 
     fun next() {
-        randomAttack(warriors, enemies)
+        attack(warriors, enemies)
         update()
         getState()
         changeAttackOrder()
